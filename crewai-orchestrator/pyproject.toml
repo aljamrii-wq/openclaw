@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aljamri-crewai-orchestrator"
+version = "0.1.0"
+description = "CrewAI orchestration for Aljamri master/worker Telegram agents."
+requires-python = ">=3.10"
+dependencies = [
+  "crewai>=0.126.0,<1.0.0",
+  "httpx>=0.27.0,<1.0.0",
+  "python-dotenv>=1.0.1,<2.0.0",
+]
+
+[project.scripts]
+aljamri-crew = "aljamri_crew.main:main"
+aljamri-telegram-bridge = "aljamri_crew.telegram_bridge:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aljamri_crew"]
+
+[tool.uv]
+package = true
